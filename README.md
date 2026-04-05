@@ -6,7 +6,7 @@ A responsive and interactive Finance Dashboard built using React and Bootstrap. 
 
 ## 🚀 Live Demo
 
-👉 https://financeui-theta.vercel.app/ 
+👉 https://finance-ui-nine.vercel.app/ 
 
 ---
 
