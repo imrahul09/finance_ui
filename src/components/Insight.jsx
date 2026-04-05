@@ -1,4 +1,4 @@
-function Insights({transactions}){
+function Insights({ transactions, theme }) {
   // 🔹 Total Income & Expense
   let income = 0;
   let expense = 0;
@@ -42,44 +42,58 @@ function Insights({transactions}){
   }
 
   return (
-    <div className=" container bg-white mb-5 p-3 p-md-4 rounded shadow-sm ">
-      <h2 className="fs-4 fw-bold mb-4" text-center>Insights</h2>
+    <div
+      className={`container p-3 p-md-5 rounded shadow-sm mb-5 ${
+        theme === "dark" ? "bg-dark text-white" : "bg-white"
+      }`}
+    >
+      <h2 className="fs-4 fw-bold mb-4" text-center>
+        Insights
+      </h2>
 
       <div className=" row g-3  ">
         {/* Top Category */}
-    <div className="col-12 col-md-4">
-      <div className="px-3 px-md-5 py-3 text-center rounded shadow h-100" style={{ backgroundColor: "#cbd1cd" }}>
-        <h3 className="text-secondary fs-5 mt-2">Top Spending</h3>
-        <p className="fw-bold">{topCategory}</p>
-      </div>
-    </div>
+        <div className="col-12 col-md-4">
+          <div
+            className="px-3 px-md-5 py-3 text-center rounded shadow h-100"
+            style={{ backgroundColor: "#cbd1cd" }}
+          >
+            <h3 className="text-secondary fs-5 mt-2">Top Spending</h3>
+            <p className="fw-bold">{topCategory}</p>
+          </div>
+        </div>
         {/*expense*/}
-       <div className="col-12 col-md-4">
-      <div className="px-3 px-md-5 py-3 text-center rounded shadow h-100" style={{ backgroundColor: "#dea097" }}>
-        <h3 className="text-secondary fs-5 mt-2">Total Expense</h3>
-        <p className="fw-bold text-danger">
-          ₹ {expense.toLocaleString()}
-        </p>
-      </div>
-    </div>
+        <div className="col-12 col-md-4">
+          <div
+            className="px-3 px-md-5 py-3 text-center rounded shadow h-100"
+            style={{ backgroundColor: "#dea097" }}
+          >
+            <h3 className="text-secondary fs-5 mt-2">Total Expense</h3>
+            <p className="fw-bold text-danger">₹ {expense.toLocaleString()}</p>
+          </div>
+        </div>
 
         {/* Savings */}
-    <div className="col-12 col-md-4">
-      <div className="px-3 px-md-5 py-3 text-center rounded shadow h-100" style={{ backgroundColor: "#8cdba4" }}>
-        <h3 className="text-secondary fs-5 mt-2">Savings</h3>
-        <p className="fw-bold text-success">
-          ₹ {savings.toLocaleString()}
-        </p>
+        <div className="col-12 col-md-4">
+          <div
+            className="px-3 px-md-5 py-3 text-center rounded shadow h-100"
+            style={{ backgroundColor: "#8cdba4" }}
+          >
+            <h3 className="text-secondary fs-5 mt-2">Savings</h3>
+            <p className="fw-bold text-success">₹ {savings.toLocaleString()}</p>
+          </div>
+        </div>
       </div>
-    </div>
-     </div>
 
       {/* 🔹 Message */}
-      <div className="mt-4 mx-auto p-3 text-center fw-bold rounded" style = {{backgroundColor:"#91bccf"}}>
+      <div
+        className="mt-4 mx-auto p-3 text-center fw-bold rounded"
+        style={{ backgroundColor: "#91bccf" }}
+      >
         <p>{message}</p>
       </div>
     </div>
   );
-};
+}
 
 export default Insights;

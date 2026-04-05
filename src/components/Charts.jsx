@@ -12,7 +12,7 @@ import {
   Legend,
 } from "recharts";
 
-function Charts({ transactions }) {
+function Charts({ transactions, theme }) {
   //prepare data for line chart (group by date)
   const groupedData = Object.values(
     transactions.reduce((acc, t) => {
@@ -49,56 +49,68 @@ function Charts({ transactions }) {
   const COLORS = ["#3B82F6", "#16A34A", "#F59E0B", "#DC2626", "#8B5CF6"];
 
   return (
-    <div className="container">
-      <div className=" row d-flex flex-row justify-content-between">
-        <div className=" col-12 col-md-6 bg-white p-3 rounded shadow-sm mb-5 ">
-          <h5>Expenses Over Time</h5>
-          {/*Line chart */}
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={groupedData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis />
-              <Tooltip />
-              {/*income line*/}
-              <Line
-                type="monotone"
-                dataKey="income"
-                stroke="#16A34A"
-                name="Income"
-              />
+    <div className="container p-3 p-md-5">
+      <div className=" row g-3 g-md-5 ">
+        <div className=" col-12 col-md-6">
+          <div
+            className={` p-3 p-md-5 rounded shadow-sm mb-5 ${
+              theme === "dark" ? "bg-dark text-white" : "bg-white"
+            }`}
+          >
+            <h5>Expenses Over Time</h5>
+            {/*Line chart */}
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={groupedData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                {/*income line*/}
+                <Line
+                  type="monotone"
+                  dataKey="income"
+                  stroke="#16A34A"
+                  name="Income"
+                />
 
-              {/*expense line  */}
-              <Line
-                type="monotone"
-                dataKey="expense"
-                stroke="#DC2626"
-                name="Expense"
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                {/*expense line  */}
+                <Line
+                  type="monotone"
+                  dataKey="expense"
+                  stroke="#DC2626"
+                  name="Expense"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-        {/* <div className="col-1"></div> */}
-        <div className="col-12 col-md-5 bg-white p-3 rounded shadow-sm mb-5">
-          <h5>Expenses by Category</h5>
 
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={categoryData}
-                dataKey="value"
-                nameKey="name"
-                outerRadius={100}
-                label
-              >
-                {categoryData.map((entry, index) => (
-                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
+        <div className="col-12 col-md-6">
+          <div
+            className={` p-3 p-md-5 rounded shadow-sm mb-5 ${
+              theme === "dark" ? "bg-dark text-white" : "bg-white"
+            }`}
+          >
+            <h5>Expenses by Category</h5>
+
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={categoryData}
+                  dataKey="value"
+                  nameKey="name"
+                  outerRadius={100}
+                  label
+                >
+                  {categoryData.map((entry, index) => (
+                    <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>

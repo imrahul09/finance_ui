@@ -3,21 +3,32 @@ import DashboardCards from "../components/DashboardCards";
 import RoleSwitcher from "../components/RoleSwitcher";
 import TransactionTable from "../components/TransactionTable";
 import Insight from "../components/Insight";
-import ToggleButton from"../components/ToggleButton";
+import ToggleButton from "../components/ToggleButton";
 
-function Dashboard({transactions,role,setRole,addTransaction,theme,setTheme}) {
- 
+function Dashboard({
+  transactions,
+  role,
+  setRole,
+  addTransaction,
+  theme,
+  setTheme,
+}) {
   return (
     <div className="container">
       <div className="d-flex justify-content-between  align-items-center my-3">
         <h2>Finance Dashboard</h2>
-      <ToggleButton theme = {theme} setTheme = {setTheme}/>
+        <ToggleButton theme={theme} setTheme={setTheme} />
       </div>
       <RoleSwitcher role={role} setRole={setRole} />
       <DashboardCards transactions={transactions} />
-      <Charts transactions={transactions} />
-      <Insight transactions = {transactions}/>
-      <TransactionTable role={role} transactions={transactions} addTransaction ={addTransaction}/>
+      <Charts transactions={transactions} theme={theme} />
+      <Insight transactions={transactions} theme={theme} />
+      <TransactionTable
+        role={role}
+        transactions={transactions}
+        addTransaction={addTransaction}
+        theme={theme}
+      />
     </div>
   );
 }
