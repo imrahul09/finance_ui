@@ -1,0 +1,36 @@
+
+*{
+  transition:background-color 0.3s, color 0.3s;
+}
+/* Light Mode (default) */
+body.light {
+  background-color: #e6eaee;
+  color: #212529;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Cards in dark mode */
+body.dark .card {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Table in dark mode */
+body.dark .table {
+  color: white;
+}
+
+/* Inputs */
+body.dark input,
+body.dark select {
+  background-color: #2c2c2c;
+  color: white;
+  border: 1px solid #555;
+}
+
+
